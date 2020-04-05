@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
@@ -13,6 +12,12 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  created() {
+    this.$http.post('usuarios.json', {
+      nome: 'Gabriel Guzowski',
+      email: 'gabriel.guzowski@al.infnet.edu.br'
+    }).then(res => console.log(res))
   }
 }
 </script>
