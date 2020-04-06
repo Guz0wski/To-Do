@@ -1,23 +1,20 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <b-container>
+      <Header />
+  </b-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Header from '../components/Header';
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  },
-  created() {
-    this.$http.post('usuarios.json', {
-      nome: 'Gabriel Guzowski',
-      email: 'gabriel.guzowski@al.infnet.edu.br'
-    }).then(res => console.log(res))
-  }
+    name: 'home',
+    components: { Header }
 }
 </script>
+
+<style>
+body {
+    margin: 16px;
+}
+</style>
