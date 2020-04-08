@@ -39,6 +39,7 @@
         <b-input-group prepend="Data de Conclusão:" class="col-sm-5">
           <b-input-group-append>
             <b-form-datepicker
+            @change="checkConcluded()"
             v-model='todo.conclusionDate'
             button-only
             right
@@ -47,7 +48,7 @@
             :min="getMinDate()"
             ></b-form-datepicker>
           </b-input-group-append>
-          <b-form-input type='date' v-model="todo.conclusionDate"></b-form-input>
+          <b-form-input type='date' @change="checkConcluded()" v-model="todo.conclusionDate"></b-form-input>
         </b-input-group>
       </b-row>
       <b-row class="justify-content-md-center mt-2">
@@ -131,6 +132,14 @@ export default {
 
       showAlert() {
           this.dismissCountDown = this.dismissSecs
+      },
+
+      checkConcluded() {
+        if (this.todo.conclusionDate == "") {
+          this.todo.concluded = false
+        } else {
+          this.todo.concluded = true
+        }
       }
     }
 }
