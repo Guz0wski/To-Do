@@ -4,6 +4,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  created() {
+    if (this.$route.path == '/To-Do') {
+      this.$route.push('/')
+    }
+  }
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
