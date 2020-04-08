@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import Header from '../components/Header';
+import { mapGetters, mapActions } from "vuex"
+import Header from '../components/Header'
 import Card from '../components/Card'
 
 export default {
@@ -29,7 +29,7 @@ export default {
     computed: mapGetters(["allTodos"]),
 
     created() {
-        this.getTodos();
+        this.getTodos()
     }
 }
 </script>

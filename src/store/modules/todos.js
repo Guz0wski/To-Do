@@ -5,11 +5,13 @@ const state = {
 }
 
 const getters = {
-    allTodos: state => state.todos
+    allTodos: state => state.todos,
+    todoById: (state) => (id) => (state.todos.filter(elem => elem.id == id))[0]
 }
 
 const actions = {
     getTodos({ commit }) {
+      state.todos = []
       axios.get('https://to-do-9f3d9.firebaseio.com/todos.json')
       .then((resp) => {
           commit('getTodo', resp.data)

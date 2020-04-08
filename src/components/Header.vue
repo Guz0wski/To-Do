@@ -77,7 +77,7 @@ export default {
         },
 
         saveTodo() {
-            if (this.todo.name != "") {
+            if (this.todo.name.trim() != "") {
                 let copy_todo = {
                     name: this.todo.name,
                     endDate: this.todo.endDate,

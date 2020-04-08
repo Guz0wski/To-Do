@@ -20,7 +20,11 @@
             <b-icon-trash class="h4"/>
         </b-col>
         <b-col cols="auto d-flex align-items-center">
-            <b-icon-info-circle class="h4"/>
+            <router-link
+            :to="{ name: 'todoInformations', params: { id: todo.id } }"
+            class="d-flex align-items-center">
+                <b-icon-info-circle class="h4"/>
+            </router-link>
         </b-col>
     </b-row>
   </b-card>
@@ -30,6 +34,8 @@
 import { mapActions } from "vuex";
 
 export default {
+    name: 'cards',
+    
     props: {
         todo: { 
             type: Object, 
@@ -40,13 +46,13 @@ export default {
     methods: {
         getToday() {
             const now = new Date()
-            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-            return new Date(today)
+            const today = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2)
+            return today
         },
 
         setConcluded() {
             this.todo.concluded = !this.todo.concluded
-            this.todo.conclusionDate = this.todo.concluded ? this.getToday() : ''
+            this.todo.conclusionDate = this.todo.concluded ? this.getToday().toString() : ''
             this.updateTodo(this.todo)
         },
 
@@ -73,8 +79,8 @@ export default {
     margin: 4px;
 }
 
-.h4, label {
-    margin: 0px;
+.h4, label, .h5 {
+    margin: 0px !important;
 }
 
 .concluded {
